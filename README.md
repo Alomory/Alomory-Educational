@@ -1,2 +1,2 @@
-# Sem4
-educational
+# Educational Journey
+this Educational Journey started in 2021 August, but i started documenting it from 2023-May due to lack of experience of GitHub and git, pluse the project we were making dose not worth being documented(as i guess). it still not worth it but i think its better to save all the project and files that were made during this Educational Journey at least for memories and for people who may get benefits of it(i hope).
