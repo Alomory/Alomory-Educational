@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Calculate Car Loan Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            input[type='number'],select{
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Perform Car Loan Calculation</h1>
+            <form method="post" action="processCalculateCarLoan.jsp">
+                <fieldset>
+                    <legend>Loan Calculation</legend>
+                    
+                    <table >
+   
+                        <tr>
+                            <td><label for="loanAmount">Loan Amount * </label></td>
+                            <td><input type="number" id="loanAmount" name="loanAmount" placeholder="Amount" required/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><label for="period">Period </label></td>
+                            <td>
+                                <select id="period" name="period">
+                                    <option value="3">3 year</option>
+                                    <option value="4">4 year</option>
+                                    <option value="5">5year</option>
+                                    <option value="7">7 year</option>
+                                </select>
+                            </td>
+                        </tr>
+                </table>
+                    <br><br>
+                    <input type="submit" id="btnSubmit" value="Submit"/>
+                    <input type="reset" id="btnCancel" value="Cancel"/>
+                </fieldset>
+                
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>BMI Calculator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <style>
+             body{
+                 font-family: cursive;
+                 background-color: lightcyan;
+             }
+            .centerBox {
+                margin: auto;
+                width: 30%;
+                border: 3px solid brown;
+                border-radius: 10px;
+                padding: 10px;
+                background-color: #f2f2f2;
+            }
+
+            .center {
+                text-align: center;
+                margin: auto;
+                width: 50%; 
+                padding: 10px;
+            }
+            input[type="submit"]{
+                background-color: #04aa6d;
+                color: white;
+                
+            }
+            input[type="reset"]{
+                background-color: #ff0000;
+                color: white;
+                
+            }
+            input[type="submit"], input[type="reset"]{
+                border: 0;
+                padding: 5px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            input[type="submit"]:hover{
+                background-color: #059862;   
+            }
+            input[type="reset"]:hover{
+                background-color: darkred;   
+            }
+        </style>
+    </head>
+    <body>
+        <div class="center">
+            <h1>BMI Calculator</h1>
+        </div>
+        <form action="processBMI.jsp" method="POST" class="centerBox">
+            <table>
+                <tr>
+                    <td>Weight :</td>
+                    <td><input type="text" name="weight" id="weight" required/>&nbsp; KILOGRAM<br></td>
+                </tr>
+                <tr>
+                    <td>Height :</td>
+                    <td><input type="text" name="height" id="height" required/>&nbsp; METER<br></td>
+                </tr>
+
+                <tr>
+                    <td><br>
+                        <input type="submit" name="Submit" value="Submit" />
+                        <input type="reset" name="Cancel" value="Cancel" />
+                    </td> 
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

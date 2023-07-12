@@ -1,0 +1,14 @@
+SMAP
+registerTraining_jsp.java
+JSP
+*S JSP
+*F
++ 0 registerTraining.jsp
+registerTraining.jsp
++ 1 copyRight.jsp
+copyRight.jsp
+*L
+5,64:49
+5#1,9:113
+68#0,4:121
+*E

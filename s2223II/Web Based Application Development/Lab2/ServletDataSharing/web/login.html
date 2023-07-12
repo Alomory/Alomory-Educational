@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Login Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                background-color: black;
+                text-align: left;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to CSF3107</h1>
+        <p>Please insert your username and password</p>
+        <form name="login" id="login" action="LoginServlet" method="POST" autocomplete="off">
+            Username:<input name="textUsername" type="text"><br>
+            Password:<input name="textPasword" type="password">
+            <br>
+            <input name="btnLogin" value="Login" type="submit">
+            <input name="textReset" value="Reset" type="reset">
+        </form>
+        <p><br></p>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+body{
+    width: 50%;
+    margin: auto;
+    background-color: azure;
+    font-family: arial, sans-serif;
+    text-align: center;
+    margin-top: 30vh;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+th{
+    background-color: #f5d882;
+}
+td{
+    background-color: #f8f1df;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}

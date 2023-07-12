@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Register Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <div class="form">
+                <fieldset>
+                    <legend>Register</legend>
+                    <form action="processUser.jsp" method="post">
+                        <table border="0">
+                            <tbody>
+                                <tr>
+                                    <td><label for="username">Username:</label></td>
+                                    <td><input name="username" id="username" type="text" 
+                                               placeholder="E.g. OmarAlomory" required maxlength="15"></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="password">Password:</label></td>
+                                    <td><input name="password" id="password" 
+                                               maxlength="10" type="password" placeholder="Your Passowrd" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="firstname">First Name:</label></td>
+                                    <td><input name="firstname" id="firstname"
+                                               type="text" placeholder="E.g. Omar" required></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="lastname">Last Name:</label></td>
+                                    <td><input name="lastname" id="lastname"
+                                               type="text" placeholder="Enter your city" required></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        <div class="formBtn">
+                            <input type="submit" value="Register">
+                        <input type="reset" value="Cancel">
+                        </div>
+                        <div class="link"><a href="login.jsp">Already Memeber</a></div>
+                        
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+    </body>
+</html>

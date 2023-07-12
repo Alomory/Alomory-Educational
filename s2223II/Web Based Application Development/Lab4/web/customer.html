@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Use JSP Scriplet and JSP Expression in application.</h1>
+            <div class="formContainer">
+                <h2 style="font-family: cursive; color: darkorchid;">Customer discount</h2>
+                <form action="processCustomer.jsp" method="post">
+                    <table border="0">
+                            <tr>
+                                <td><label for="customer-code">Customer Code</label></td>
+                                <td><input type="text" name="customer-code" id="customer-code" placeholder="Key-in customer code"/></td>
+                            </tr>
+                            <tr>
+                                <td><label for="quantity">Quantity</label></td>
+                                <td><input type="number" name="quantity" id="quantity" placeholder="Key-in quantity"/></td>
+                            </tr>
+                            <tr>
+                                <td><label >Customer Type</label></td>
+                                <td>
+                                    <input type="radio" name="customer-type"  value="1"/>Normal Customer
+                                    <input type="radio" name="customer-type"  value="2"/>Privilege Customer
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br><br>
+                    <input type="submit" id="btnSubmit" value="Submit"/>
+                    <input type="reset" id="btnCancel" value="Cancel"/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

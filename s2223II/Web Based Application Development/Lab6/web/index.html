@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Lab 6</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+             body{
+                width: 50%;
+                margin: auto;
+                background-color: azure;
+                font-family: arial, sans-serif;
+                text-align: center;
+                margin-top: 30vh;
+            }
+            .links p{
+                padding: 7px;
+                width: 150px;
+                background-color: lightgray;
+                border-radius: 5px;
+                margin: auto;
+                margin-bottom: 10px;
+                font-size: x-large;
+                position: relative;
+            }
+            a{
+                text-decoration: none;
+                color: black;
+                
+                
+            }
+            .links p::after{
+                content: " ";
+                
+                width: 0px;
+                height: 1.5px;
+                position: absolute;
+                background-color: black;
+                left: 30px;
+                top: 30px;  
+                border-radius: 20px;
+                transition: display 2s, width 1s;
+            }
+            .links p:hover:after{
+                display: inline-block;
+                width: 105px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Links to the tasks:</h1>
+            <div class="links">
+                <p><a href="SampleInsertionRecord.jsp">task 1</a></p>
+                <p><a href="insertAuthor.jsp">task 2</a></p>
+                <p><a href="insertStudent.jsp">task 3</a></p>
+                <p><a href="queryStudent.jsp">task 4</a></p>
+                <p><a href="registerMarathon.jsp">task 5</a></p>
+                <p><a href="main.jsp">Exercise</a></p>
+            
+            </div>
+        </div>
+    </body>
+</html>
