@@ -19,7 +19,7 @@ public class Queue{
             noOfItems++;
             return;
         }
-        // else noOfItems is > 0 then value is compared and sorted
+        // else no of items is > 0 then value is compared and sorted
         for(i = noOfItems-1; i >= 0 ; i--){
             if(value < queue[i]){
                 queue[i+1] = queue[i];

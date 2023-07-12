@@ -1,7 +1,7 @@
-
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class DFS{
+public class BinarySearchTree{
 
     public static Node root;
     public int maxColor;
@@ -9,7 +9,7 @@ public class DFS{
 
     
 
-    public DFS(){
+    public BinarySearchTree(){
         this.root = null;
     }
 
@@ -99,7 +99,7 @@ public class DFS{
         
     }
     public static void main(String[] args) {
-        DFS b = new DFS();
+        BinarySearchTree b = new BinarySearchTree();
         Scanner in = new Scanner(System.in);
         // assigning values to N and C 
         String temp = in.nextLine();
@@ -114,7 +114,9 @@ public class DFS{
         //Asigning values to C[i]
         temp = in.nextLine();
         C = temp.split(" ");
-
+      //  N[0] = temp.split( " "); // root
+        System.out.println(Arrays.toString(N));
+        System.out.println(Arrays.toString(C));
         for(int i = 0 ; i <= N.length; i ++){
             if(i == 0){
                 b.insert(0, Integer.parseInt(C[i])); // for the root
@@ -122,7 +124,11 @@ public class DFS{
                 b.insert(Integer.parseInt(N[i-1]), Integer.parseInt(C[i]));
             }
         }
-
+    //     b.insert(0 , 1);
+    //     b.insert(1 , 4);
+    //     b.insert(1 , 2);
+    //     b.insert(3 , 1);
+    //     b.insert(3 , 2);
         
 
        for(int i = 1; i <=b.maxVertex; i++){
