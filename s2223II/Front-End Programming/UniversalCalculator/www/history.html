@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8f01d71009.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Universal Unit Converter(History)</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="selection-container">
+            <div class="selection-header">
+                <div class="selection-back-wrap">
+                    <div id="goback">
+                        <div class="back-link">
+                            <p><i class="fa-solid fa-arrow-left"></i> Back</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="gohistory" class="history">
+                    <p><i class="fa fa-history" aria-hidden="true"></i> History</p>
+                </div>
+            </div>
+
+            <div class="selection-main">
+                <div class="maintext">
+                    <h3>Unit Converter</h3>
+
+                </div>
+                <div class="row">
+                    <a href="index.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-scale-unbalanced-flip fa-2xl"></i>
+                                <br><br> BMI
+                            </p>
+                        </div>
+                    </a>
+                    <a href="time.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-clock fa-2xl"></i>
+                                <br><br> Time
+                            </p>
+                        </div>
+                    </a>
+                    <a href="temperature.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-temperature-half fa-2xl"></i>
+                                <br><br> Temperature
+                            </p>
+                        </div>
+                    </a>
+                    <a href="length.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-ruler-vertical fa-2xl"></i>
+                                <br><br> Length
+                            </p>
+                        </div>
+                    </a>
+                    <a href="age.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-calendar-days fa-2xl"></i>
+                                <br><br> Age
+                            </p>
+                        </div>
+                    </a>
+                    <a href="mass.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-weight-scale fa-2xl"></i>
+                                <br><br> Mass
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="section-selected-container">
+            <button id="menu">Menu</button>
+            <div class="selection-selected-content">
+
+                <div class="history-container">
+                    <div class="history-text">
+                        History
+                    </div>
+                    <div class="history-content">
+                        <div id="bmi" class="history-subsection">
+                            BMI <i id="bmi-icon" class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div id="time" class="history-subsection">
+                            Time <i id="time-icon" class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div id="temperature" class="history-subsection">
+                            Temperature <i id="temperature-icon" class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div id="length" class="history-subsection">
+                            Length <i id="length-icon" class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div id="age" class="history-subsection">
+                            Age <i id="age-icon" class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div id="mass" class="history-subsection">
+                            Mass <i id="mass-icon" class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getDatabase, ref, get, set, child, update, remove }
+            from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        $(document).ready(function () {
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyDlfXppZAlKPhka8PshFutePTELu7CW0mQ",
+                authDomain: "innate-infusion-341416.firebaseapp.com",
+                databaseURL: "https://innate-infusion-341416-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "innate-infusion-341416",
+                storageBucket: "innate-infusion-341416.appspot.com",
+                messagingSenderId: "697421901220",
+                appId: "1:697421901220:web:633080c806f82db722a531"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+
+
+
+
+
+            const db = getDatabase();
+
+            //BMI data Retrieval 
+            function FindBMIData() {
+                const dbref = ref(db);
+                get(child(dbref, "Universal/BMI"))
+                    .then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const result = snapshot.val();
+                            console.log(result);
+                            let bmi = document.getElementById('bmi');
+                            let bmiContent = document.createElement('div');
+                            bmiContent.setAttribute('class', 'Unitscontent');
+                            let ol = document.createElement('ol');
+                            
+                            Object.keys(result).forEach((key) => {
+                                const value = result[key];
+                                console.log(key + " = {height = " + (value.Height * 100) + " wieght = " + value.Weight + "\n Result = " + value.Result + "}"); //debug
+                                let li = document.createElement('li');
+                                let a = document.createElement('a');
+                                $(a).text("Height = " + (value.Height * 100) + ", Wieght = " + value.Weight + ",  Result = " + value.Result)
+                                a.setAttribute('href','index.html?'+key)
+                                li.appendChild(a);
+                                ol.appendChild(li);
+
+
+                            });
+                            bmiContent.appendChild(ol);
+                            bmi.appendChild(bmiContent);
+                            $('.Unitscontent').hide();
+                        } else {
+                            console.log('No data found');
+                        }
+                    })
+                    .catch((error) => {
+                        console.log('Error retrieving data:', error);
+                    });
+            }
+            // end
+            //time
+            function FindTimeData() {
+                const dbref = ref(db);
+
+                get(child(dbref, "Universal/Time"))
+                    .then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const result = snapshot.val();
+                            console.log(result);
+                            let time = document.getElementById('time');
+                            let timeContent = document.createElement('div');
+                            timeContent.setAttribute('class', 'Unitscontent');
+                            let ol = document.createElement('ol');
+                            
+                            Object.keys(result).forEach((key) => {
+                                const value = result[key];
+                                console.log(key + " = {Value = " + value.Value+ ", wieght = " + value.Weight + "\n Result = " + value.Result + "}"); //debug
+                                let li = document.createElement('li');
+                                let a = document.createElement('a');
+                                $(a).text("Value = " + value.Value+ ", From = " + value.From +", to = " + value.To +  ",  Result = " + value.Result)
+                                a.setAttribute('href','time.html?'+key)
+                                li.appendChild(a);
+                                ol.appendChild(li);
+
+
+                            });
+                            timeContent.appendChild(ol);
+                            time.appendChild(timeContent);
+                            $('.Unitscontent').hide();
+                        } else {
+                            console.log('No data found');
+                        }
+                    })
+                    .catch((error) => {
+                        console.log('Error retrieving data:', error);
+                    });
+            }
+            //end time
+            // temp 
+            function FindTempData() {
+                const dbref = ref(db);
+
+                get(child(dbref, "Universal/Temperature"))
+                    .then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const result = snapshot.val();
+                            console.log(result);
+                            let temperature = document.getElementById('temperature');
+                            let temperatureContent = document.createElement('div');
+                            temperatureContent.setAttribute('class', 'Unitscontent');
+                            let ol = document.createElement('ol');
+                            
+                            Object.keys(result).forEach((key) => {
+                                const value = result[key];
+                                console.log(key + " = {Value = " + value.Value+ ", from = " + value.From +"to = "+value.To+ "\n Result = " + value.Result + "}"); //debug
+                                let li = document.createElement('li');
+                                let a = document.createElement('a');
+                                $(a).text("Value = " + value.Value+ ", From = " + value.From +", to = " + value.To +  ",  Result = " + value.Result)
+                                a.setAttribute('href','temperature.html?'+key)
+                                li.appendChild(a);
+                                ol.appendChild(li);
+
+
+                            });
+                            temperatureContent.appendChild(ol);
+                            temperature.appendChild(temperatureContent);
+                            $('.Unitscontent').hide();
+                        } else {
+                            console.log('No data found');
+                        }
+                    })
+                    .catch((error) => {
+                        console.log('Error retrieving data:', error);
+                    });
+            }
+            //end
+            //Length
+            function FindLengthData() {
+                const dbref = ref(db);
+                get(child(dbref, "Universal/Length"))
+                    .then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const result = snapshot.val();
+                            console.log(result);
+                            let length = document.getElementById('length');
+                            let lengthContent = document.createElement('div');
+                            lengthContent.setAttribute('class', 'Unitscontent');
+                            let ol = document.createElement('ol');
+                            
+                            Object.keys(result).forEach((key) => {
+                                const value = result[key];
+                                console.log(key + " = {value = " + value.Value + " from = " + value.From + " to = "+value.To+"\n Result = " + value.Result + "}"); //debug
+                                let li = document.createElement('li');
+                                let a = document.createElement('a');
+                                $(a).text("Value = " + value.Value  + ", From = " + value.From + " To = "+value.To+",  Result = " + value.Result)
+                                a.setAttribute('href','length.html?'+key)
+                                li.appendChild(a);
+                                ol.appendChild(li);
+
+
+                            });
+                            lengthContent.appendChild(ol);
+                            length.appendChild(lengthContent);
+                            $('.Unitscontent').hide();
+                        } else {
+                            console.log('No data found');
+                        }
+                    })
+                    .catch((error) => {
+                        console.log('Error retrieving data:', error);
+                    });
+            }
+            // end
+               //Length
+               function FindAgeData() {
+                const dbref = ref(db);
+                get(child(dbref, "Universal/Age"))
+                    .then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const result = snapshot.val();
+                            console.log(result);
+                            let age = document.getElementById('age');
+                            let ageContent = document.createElement('div');
+                            ageContent.setAttribute('class', 'Unitscontent');
+                            let ol = document.createElement('ol');
+                            
+                            Object.keys(result).forEach((key) => {
+                                const value = result[key];
+                                console.log(key + " = {date = " + value.Date +"\n Result = " + value.Result + "}"); //debug
+                                let li = document.createElement('li');
+                                let a = document.createElement('a');
+                                $(a).text("Date = " + value.Date  +",  Result = " + value.Result)
+                                a.setAttribute('href','age.html?'+key)
+                                li.appendChild(a);
+                                ol.appendChild(li);
+
+
+                            });
+                            ageContent.appendChild(ol);
+                            age.appendChild(ageContent);
+                            $('.Unitscontent').hide();
+                        } else {
+                            console.log('No data found');
+                        }
+                    })
+                    .catch((error) => {
+                        console.log('Error retrieving data:', error);
+                    });
+            }
+            // end
+               //Length
+               function FindMassData() {
+                const dbref = ref(db);
+                get(child(dbref, "Universal/Mass"))
+                    .then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const result = snapshot.val();
+                            console.log(result);
+                            let mass = document.getElementById('mass');
+                            let massContent = document.createElement('div');
+                            massContent.setAttribute('class', 'Unitscontent');
+                            let ol = document.createElement('ol');
+                            
+                            Object.keys(result).forEach((key) => {
+                                const value = result[key];
+                                console.log(key + " = {value = " + value.Value + " from = " + value.From + " to = "+value.To+"\n Result = " + value.Result + "}"); //debug
+                                let li = document.createElement('li');
+                                let a = document.createElement('a');
+                                $(a).text("Value = " + value.Value  + ", From = " + value.From + " To = "+value.To+",  Result = " + value.Result)
+                                a.setAttribute('href','mass.html?'+key)
+                                li.appendChild(a);
+                                ol.appendChild(li);
+
+
+                            });
+                            massContent.appendChild(ol);
+                            mass.appendChild(massContent);
+                            $('.Unitscontent').hide();
+                        } else {
+                            console.log('No data found');
+                        }
+                    })
+                    .catch((error) => {
+                        console.log('Error retrieving data:', error);
+                    });
+            }
+            // end
+            $("#bmi").click(function () {  
+                $("#bmi-icon").toggleClass("fa-chevron-down fa-chevron-up");
+                $('#bmi .Unitscontent').slideToggle(); // Slide the div down/up
+            });
+            $("#time").click(function () {  
+                $("#time-icon").toggleClass("fa-chevron-down fa-chevron-up");
+                $('#time .Unitscontent').slideToggle(); // Slide the div down/up
+            });
+            $("#temperature").click(function () {  
+                $("#temperature-icon").toggleClass("fa-chevron-down fa-chevron-up");
+                $('#temperature .Unitscontent').slideToggle(); // Slide the div down/up
+            });
+            $("#age").click(function () {  
+                $("#age-icon").toggleClass("fa-chevron-down fa-chevron-up");
+                $('#age .Unitscontent').slideToggle(); // Slide the div down/up
+            });
+            $("#length").click(function () {  
+                $("#length-icon").toggleClass("fa-chevron-down fa-chevron-up");
+                $('#length .Unitscontent').slideToggle(); // Slide the div down/up
+            });
+            $("#mass").click(function () {  
+                $("#mass-icon").toggleClass("fa-chevron-down fa-chevron-up");
+                $('#mass .Unitscontent').slideToggle(); // Slide the div down/up
+            });
+            // must
+            $('#menu').on('click', function () {
+                console.log("we entered the test function boundary");//debug
+                $('.selection-container').css('left', "0px")
+            });
+            $('#goback').on('click', function () {
+                console.log("we entered the button function boundary");//debug
+                $('.selection-container').css('left', "-1000px")
+            });
+            // adding history functionality
+            $('#gohistory').on('click', function () {
+                window.location.href = 'history.html';
+            });
+            FindBMIData();
+            FindTimeData();
+            FindTempData();
+            FindLengthData();
+            FindAgeData();
+            FindMassData();
+        });
+
+
+
+    </script>
+</body>
+
+</html>

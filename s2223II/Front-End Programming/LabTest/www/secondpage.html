@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>Bootstrap Example</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+
+   <!-- Custom styles for this template -->
+   <link href="css/navbar-fixed-top.css" rel="stylesheet">
+</head>
+
+<body>
+   <!-- Fixed navbar -->
+   <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+               aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">S63955</a>
+         </div>
+         <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+               <li class="active"><a href="#">Home</a></li>
+               <li><a href="#about">About</a></li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                     aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="#">Profile</a></li>
+                     <li><a href="#">Logout</a></li>
+                  </ul>
+               </li>
+            </ul>
+         </div><!--/.nav-collapse -->
+
+   </nav>
+
+   <div id="middel">
+      <table class="table table-striped">
+         <tr>
+            <td>Employee Number</td>
+            <td id="id"></td>
+         </tr>
+         <tr>
+            <td>Firstname</td>
+            <td id="fname"></td>
+         </tr>
+         <tr>
+            <td>Lastname</td>
+            <td id="lname"></td>
+         </tr>
+         <tr>
+            <td>Office Code</td>
+            <td id="office"></td>
+         </tr>
+         <tr>
+            <td>Phone Extension</td>
+            <td id="phone"></td>
+         </tr>
+         <tr>
+            <td>Email Address</td>
+            <td id="email"></td>
+         </tr>
+         <tr>
+            <td>Job Title</td>
+            <td id="job"></td>
+         </tr>
+         <tr>
+            <td>Report to</td>
+            <td id="repo"></td>
+         </tr>
+      </table>
+   </div>
+   <nav class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container">
+
+         <div class="row">
+            <div class="col-md-12">
+               Footer
+            </div>
+         </div>
+
+      </div>
+
+   </nav>
+   <script>
+      const url = window.location.href;
+
+      // Extract the query string from the URL
+      const queryString = url.split('?')[1];
+      console.log(queryString);
+      function showEmployee(str) {
+         var xhttp;
+         if (str == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+         }
+         xhttp = new XMLHttpRequest();
+         xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
+               var jsonString = this.responseText;
+
+                var jsonArray = JSON.parse(jsonString);
+               
+               // const container = document.getElementById('middel');
+               // container.textContent = jsonArray;
+               //console.log(jsonArray);
+               console.log(jsonArray[1])
+
+
+               jsonArray.forEach(obj => {
+                 
+                  
+                  var temp = JSON.parse(obj);
+                  
+                  document.getElementById("id").innerHTML = temp['employeeNumber'];
+                  document.getElementById("fname").innerHTML = temp['firstName'];
+                  document.getElementById("lname").innerHTML = temp['lastName'];
+                  document.getElementById("office").innerHTML = temp['officeCode'];
+                  document.getElementById("phone").innerHTML = temp['extension'];
+                  document.getElementById("email").innerHTML = temp['email'];
+                  document.getElementById("job").innerHTML = temp['jobTitle'];
+                  document.getElementById("repo").innerHTML = temp['reportsTo'];
+                 // {employeeNumber, firstName, lastName, officeCode, extension, email, jobTitle and reportsTo}
+                  console.log(temp['lastName'])
+                  
+                 
+                 
+               });
+
+            }
+         };
+         xhttp.open(
+            "GET",
+            "https://kerbau.odaje.biz/getstaffbyid.php?id=" + str,
+            true
+         );
+         xhttp.send();
+      }
+      showEmployee(queryString);
+   </script>
+
+   <script src="js/jquery-3.2.1.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weight Scale Converter</title>
+    <script src="https://kit.fontawesome.com/8f01d71009.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        label {
+            margin-right: 10px;
+
+        }
+
+
+
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+        }
+
+        select {
+            padding: 5px;
+            margin-bottom: 8px;
+            font-size: xx-small;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+    <script type="module">
+
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getDatabase, ref, get, set, child, update, remove }
+            from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        $(document).ready(function () {
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyDlfXppZAlKPhka8PshFutePTELu7CW0mQ",
+                authDomain: "innate-infusion-341416.firebaseapp.com",
+                databaseURL: "https://innate-infusion-341416-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "innate-infusion-341416",
+                storageBucket: "innate-infusion-341416.appspot.com",
+                messagingSenderId: "697421901220",
+                appId: "1:697421901220:web:633080c806f82db722a531"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+
+
+
+
+
+            const db = getDatabase();
+
+            
+
+            function InsertData(value, from, to, result) {
+                set(ref(db, "Universal/Mass/" + new Date().getTime() + "/"), {
+                    Value: value,
+                    From: from,
+                    To: to,
+                    Result: result
+                })
+                    .then(() => {
+                        console.log("Data added successfully");
+                    })
+                    .catch((error) => {
+                        alert(error);
+                    });
+            }
+            $('#menu').on('click', function () {
+                console.log("we entered the test function boundary");//debug
+                $('.selection-container').css('left', "0px")
+            });
+            $('#goback').on('click', function () {
+                console.log("we entered the button function boundary");//debug
+                $('.selection-container').css('left', "-1000px")
+            });
+            // adding history functionality
+            $('#gohistory').on('click', function () {
+                window.location.href = 'history.html';
+            });
+            $("#calculateBtn").click(function () {
+                var weight = parseFloat($("#weight").val());
+                var fromUnit = $("#fromUnit").val();
+                var toUnit = $("#toUnit").val();
+                var resultDiv = $("#result");
+
+                if (isNaN(weight)) {
+                    resultDiv.text("Please enter a valid weight.");
+                    return;
+                }
+
+                
+                var convertedWeight;
+                switch (fromUnit) {
+                    case 'kg':
+                        switch (toUnit) {
+                            case 'g':convertedWeight = weight * 1000; break;
+                            case 'mg':convertedWeight = weight * 1000000; break;
+                            case 'µg':convertedWeight = weight * 1000000000; break;
+                            case 't':convertedWeight = weight / 1000; break;
+                            case 'st':convertedWeight = weight * 0.157473; break;
+                            case 'lb':convertedWeight = weight * 2.20462; break;
+                            case 'oz':convertedWeight = weight * 35.27396; break;
+                            case 'ct':convertedWeight = weight * 5000; break;
+                            case 'N':convertedWeight = weight * 9.80665; break;
+                            case 'kip':convertedWeight = weight * 0.00220462; break;
+                            case 'lt':convertedWeight = weight / 0.000984207; break;
+                        }
+                        break;
+                    case 'g':
+                        switch (toUnit) {
+                            case 'kg':convertedWeight = weight / 1000; break;
+                            case 'mg':convertedWeight = weight * 1000; break;
+                            case 'µg':convertedWeight = weight * 1000000; break;
+                            case 't':convertedWeight = weight / 1000000; break;
+                            case 'st':convertedWeight = weight / 6350.29318; break;
+                            case 'lb':convertedWeight = weight / 453.59237; break;
+                            case 'oz':convertedWeight = weight / 28.34952; break;
+                            case 'ct':convertedWeight = weight * 5; break;
+                            case 'N':convertedWeight = weight * 0.00980665; break;
+                            case 'kip':convertedWeight = weight * 2.2046e-6; break;
+                            case 'lt':convertedWeight = weight / 0.0000022046; break;
+                        }
+                        break;
+                    case 'mg':
+                        switch (toUnit) {
+                            case 'kg':convertedWeight = weight / 1000000; break;
+                            case 'g':convertedWeight = weight / 1000; break;
+                            case 'µg':convertedWeight = weight * 1000; break;
+                            case 't':convertedWeight = weight / 1000000000; break;
+                            case 'st':convertedWeight = weight / 6.35e+6; break;
+                            case 'lb':convertedWeight = weight / 453592.37; break;
+                            case 'oz':convertedWeight = weight / 28349.5231; break;
+                            case 'ct':convertedWeight = weight / 200; break;
+                            case 'N':convertedWeight = weight * 1e-6 * 9.80665; break;
+                            case 'kip':convertedWeight = weight * 2.2046e-9; break;
+                            case 'lt':convertedWeight = weight / 1.016e+9; break;
+                        }
+                        break;
+                    case 'µg':
+                        switch (toUnit) {
+                            case 'kg':convertedWeight = weight / 1e+9; break;
+                            case 'g':convertedWeight = weight / 1e+6; break;
+                            case 'mg':convertedWeight = weight / 1000; break;
+                            case 't':convertedWeight = weight / 1e+12; break;
+                            case 'st':convertedWeight = weight / 6.35e+10; break;
+                            case 'lb':convertedWeight = weight / 4.5359237e+8; break;
+                            case 'oz':convertedWeight = weight / 2.835e+7; break;
+                            case 'ct':convertedWeight = weight / 2e+7; break;
+                            case 'N':convertedWeight = weight * 1e-9 * 9.80665; break;
+                            case 'kip':convertedWeight = weight * 2.2046e-12; break;
+                            case 'lt':convertedWeight = weight / 1.016e+12; break;
+                        }
+                        break;
+                    case 't':
+                        switch (toUnit) {
+                            case 'kg':convertedWeight = weight * 1000; break;
+                            case 'g':convertedWeight = weight * 1e+6; break;
+                            case 'mg':convertedWeight = weight * 1e+9; break;
+                            case 'µg':convertedWeight = weight * 1e+12; break;
+                            case 'st':convertedWeight = weight * 157.473; break;
+                            case 'lb':convertedWeight = weight * 2204.62; break;
+                            case 'oz':convertedWeight = weight * 35273.96; break;
+                            case 'ct':convertedWeight = weight * 5e+6; break;
+                            case 'N':convertedWeight = weight * 9.80665e+3; break;
+                            case 'kip':convertedWeight = weight * 2.2046; break;
+                            case 'lt':convertedWeight = weight / 0.984207; break;
+                        }
+                        break;
+                    case 'st':
+                        switch (toUnit) {
+                            case 'kg':convertedWeight = weight * 6.35029; break;
+                            case 'g':convertedWeight = weight * 6350.29; break;
+                            case 'mg':convertedWeight = weight * 6.35e+6; break;
+                            case 'µg':convertedWeight = weight * 6.35e+9; break;
+                            case 't':convertedWeight = weight * 0.00635029; break;
+                            case 'lb':convertedWeight = weight * 14; break;
+                            case 'oz':convertedWeight = weight * 224; break;
+                            case 'ct':convertedWeight = weight * 31751.5; break;
+                            case 'N':convertedWeight = weight * 62.27396; break;
+                            case 'kip':convertedWeight = weight * 0.0138686; break;
+                            case 'lt':convertedWeight = weight * 0.00625; break;
+                        }
+                        break;
+                    case 'lb':
+                        switch (toUnit) {
+                            case 'kg':convertedWeight = weight * 0.453592; break;
+                            case 'g':convertedWeight = weight * 453.592; break;
+                            case 'mg':convertedWeight = weight * 453592; break;
+                            case 'µg':convertedWeight = weight * 4.53592e+8; break;
+                            case 't':convertedWeight = weight * 0.000453592; break;
+                            case 'st':convertedWeight = weight / 14; break;
+                            case 'oz':convertedWeight = weight * 16; break;
+                            case 'ct':convertedWeight = weight * 2267.96; break;
+                            case 'N':convertedWeight = weight * 4.44822; break;
+                            case 'kip':convertedWeight = weight * 0.0005; break;
+                            case 'lt':convertedWeight = weight * 0.000446429; break;
+                        }
+                        break;
+                    case 'oz':
+                        switch (toUnit) {
+                            case 'kg':convertedWeight = weight * 0.0283495; break;
+                            case 'g':convertedWeight = weight * 28.3495; break;
+                            case 'mg':convertedWeight = weight * 28349.5; break;
+                            case 'µg':convertedWeight = weight * 2.835e+7; break;
+                            case 't':convertedWeight = weight * 0.0000283495; break;
+                            case 'st':convertedWeight = weight * 0.00625; break;
+                            case 'lb':convertedWeight = weight * 0.0625; break;
+                            case 'ct':convertedWeight = weight * 141.748; break;
+                            case 'N':convertedWeight = weight * 0.2780139; break;
+                            case 'kip':convertedWeight = weight * 0.00003125; break;
+                            case 'lt':convertedWeight = weight * 0.0000279018; break;
+                        }
+                        break;
+                    case 'ct':
+                        switch (toUnit) {
+                            case 'kg':convertedWeight = weight / 5000; break;
+                            case 'g':convertedWeight = weight / 0.2; break;
+                            case 'mg':convertedWeight = weight * 200; break;
+                            case 'µg':convertedWeight = weight * 2e+5; break;
+                            case 't':convertedWeight = weight / 5e+6; break;
+                            case 'st':convertedWeight = weight / 31751.5; break;
+                            case 'lb':convertedWeight = weight / 2267.96; break;
+                            case 'oz':convertedWeight = weight / 141.748; break;
+                            case 'N':convertedWeight = weight * 0.0002 * 9.80665; break;
+                            case 'kip':convertedWeight = weight * 4.40925e-8; break;
+                            case 'lt':convertedWeight = weight / 2.2046e+6; break;
+                        }
+                        break;
+                    case 'N':
+                        switch (toUnit) {
+                            case 'kg':convertedWeight = weight / 9.80665; break;
+                            case 'g':convertedWeight = weight / 0.00980665; break;
+                            case 'mg':convertedWeight = weight / 9.80665e-6; break;
+                            case 'µg':convertedWeight = weight / 9.80665e-9; break;
+                            case 't':convertedWeight = weight / 9.80665e+3; break;
+                            case 'st':convertedWeight = weight / 62.27396; break;
+                            case 'lb':convertedWeight = weight / 4.44822; break;
+                            case 'oz':convertedWeight = weight / 0.2780139; break;
+                            case 'ct':convertedWeight = weight / 0.0002; break;
+                            case 'kip':convertedWeight = weight * 0.000224809; break;
+                            case 'lt':convertedWeight = weight / 0.00101605; break;
+                        }
+                        break;
+                    case 'kip':
+                        switch (toUnit) {
+                            case 'kg':convertedWeight = weight / 0.000224809; break;
+                            case 'g':convertedWeight = weight / 2.24809e-7; break;
+                            case 'mg':convertedWeight = weight / 2.24809e-10; break;
+                            case 'µg':convertedWeight = weight / 2.24809e-13; break;
+                            case 't':convertedWeight = weight / 2204.62; break;
+                            case 'st':convertedWeight = weight / 0.0138686; break;
+                            case 'lb':convertedWeight = weight / 0.0005; break;
+                            case 'oz':convertedWeight = weight / 0.00003125; break;
+                            case 'ct':convertedWeight = weight / 4.40925e-8; break;
+                            case 'N':convertedWeight = weight / 0.000224809 * 9.80665; break;
+                            case 'lt':convertedWeight = weight / 0.00112; break;
+                        }
+                        break;
+                    case 'lt':
+                        switch (toUnit) {
+                            case 'kg':convertedWeight = weight * 1016.05; break;
+                            case 'g':convertedWeight = weight * 1.016e+6; break;
+                            case 'mg':convertedWeight = weight * 1.016e+9; break;
+                            case 'µg':convertedWeight = weight * 1.016e+12; break;
+                            case 't':convertedWeight = weight * 0.984207; break;
+                            case 'st':convertedWeight = weight * 160; break;
+                            case 'lb':convertedWeight = weight * 2240; break;
+                            case 'oz':convertedWeight = weight * 35840; break;
+                            case 'ct':convertedWeight = weight * 2.2046e+6; break;
+                            case 'N':convertedWeight = weight * 1016.05 * 9.80665; break;
+                            case 'kip':convertedWeight = weight * 0.00112; break;
+                        }
+                        break;
+                    default:
+                        resultDiv.text("Invalid from unit.");
+                        return;
+                }
+
+                
+                resultDiv.text("Converted weight: " + convertedWeight.toFixed(4) + " " + toUnit);
+                let tempresult  = "Converted weight: " + convertedWeight.toFixed(4) + " " + toUnit;
+                InsertData(weight, fromUnit, toUnit, tempresult);
+            });
+            // Change the selected option to the next index
+            $('#fromUnit').change(function () {
+                var selectedValue = $(this).val();
+                var selectedIndex = $(this).prop('selectedIndex');
+                var optionsLength = $(this).find('option').length;
+
+                console.log('Selected value: ' + selectedValue);//debug
+                console.log('Selected index: ' + selectedIndex);//debug
+
+                    var selectedValueto = $('#toUnit').val();
+                    var selectedIndexto = $('#toUnit').prop('selectedIndex');
+                    var optionsLengthto = $('#toUnit').find('option').length;
+                    console.log("selected item ="+selectedIndex+" selected item to = "+selectedIndexto)
+                    if (selectedIndex == selectedIndexto) {
+                        // Change the selected option to the next index
+                        var nextIndex = (selectedIndexto + 1) % optionsLengthto;
+                        $('#toUnit').prop('selectedIndex', nextIndex);
+                    }
+            });
+            $('#toUnit').change(function () {
+                var selectedValue = $(this).val();
+                var selectedIndex = $(this).prop('selectedIndex');
+                var optionsLength = $(this).find('option').length;
+
+                console.log('Selected value: ' + selectedValue);//debug
+                console.log('Selected index: ' + selectedIndex);//debug
+                
+                    var selectedValueto = $('#fromUnit').val();
+                    var selectedIndexto = $('#fromUnit').prop('selectedIndex');
+                    var optionsLengthto = $('#fromUnit').find('option').length;
+                    console.log("selected item ="+selectedIndex+" selected item to = "+selectedIndexto)
+                    if (selectedValue == selectedValueto) {
+                        // Change the selected option to the next index
+                        var nextIndex = (selectedIndexto + 1) % optionsLengthto;
+                        $('#fromUnit').prop('selectedIndex', nextIndex);
+                    }
+            });
+            const url = window.location.href;
+
+            // Extract the query string from the URL
+            const queryString = url.split('?')[1];
+
+            if (queryString == undefined) {
+                console.log('you didnt come from history page');//debug
+            } else {
+                console.log(queryString);//debug
+
+                const dbref = ref(db);
+
+                get(child(dbref, "Universal/Mass/" + queryString))
+                    .then((snapshot) => {
+                        if (snapshot.exists()) {
+                            $('#weight').val(snapshot.val().Value);
+                            $('#fromUnit').val(snapshot.val().From) ;
+                            $('#toUnit').val(snapshot.val().To) ;
+                            $('#result').text(snapshot.val().Result);
+                        } else {
+                            alert("No data found");
+                        }
+                    })
+                    .catch((error) => {
+                        alert(error)
+                    })
+            }
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="selection-container">
+            <div class="selection-header">
+                <div class="selection-back-wrap">
+                    <div id="goback">
+                        <div class="back-link">
+                            <p><i class="fa-solid fa-arrow-left"></i> Back</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="gohistory" class="history">
+                    <p><i class="fa fa-history" aria-hidden="true"></i> History</p>
+                </div>
+            </div>
+
+            <div class="selection-main">
+                <div class="maintext">
+                    <h3>Unit Converter</h3>
+
+                </div>
+                <div class="row">
+                    <a href="index.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-scale-unbalanced-flip fa-2xl"></i>
+                                <br><br> BMI
+                            </p>
+                        </div>
+                    </a>
+                    <a href="time.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-clock fa-2xl"></i>
+                                <br><br> Time
+                            </p>
+                        </div>
+                    </a>
+                    <a href="temperature.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-temperature-half fa-2xl"></i>
+                                <br><br> Temperature
+                            </p>
+                        </div>
+                    </a>
+                    <a href="length.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-ruler-vertical fa-2xl"></i>
+                                <br><br> Length
+                            </p>
+                        </div>
+                    </a>
+                    <a href="age.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-calendar-days fa-2xl"></i>
+                                <br><br> Age
+                            </p>
+                        </div>
+                    </a>
+                    <a href="mass.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-weight-scale fa-2xl"></i>
+                                <br><br> Mass
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="section-selected-container">
+            <button id="menu">Menu</button>
+            <div class="selection-selected-content">
+                <h3 id="selection-selected-main">Mass</h3>
+                <form>
+                    <div class="input-group">
+                        <label for="weight">Weight:</label>
+                        <input type="number" id="weight" placeholder="Enter weight" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="fromUnit">From
+                            (<select id="fromUnit">
+                                <option value="kg">Kg</option>
+                                <option value="g">Gram</option>
+                                <option value="mg">Milligram</option>
+                                <option value="µg">Microgram</option>
+                                <option value="t">Metric Ton</option>
+                                <option value="lb">Pound</option>
+                                <option value="oz">Ounce</option>
+                                <option value="ct">Carat</option>
+                                <option value="st">Stone</option>
+                                <option value="N">Newton</option>
+                                <option value="kip">Kip</option>
+                                <option value="lt">Long Ton</option>
+                            </select>)</label>
+                        <label for="toUnit">To:
+                            (<select id="toUnit">
+                                <option value="kg">Kg</option>
+                                <option selected value="g">Gram</option>
+                                <option value="mg">Milligram</option>
+                                <option value="µg">Microgram</option>
+                                <option value="t">Metric Ton</option>
+                                <option value="lb">Pound</option>
+                                <option value="oz">Ounce</option>
+                                <option value="ct">Carat</option>
+                                <option value="st">Stone</option>
+                                <option value="N">Newton</option>
+                                <option value="kip">Kip</option>
+                                <option value="lt">Long Ton</option>
+                            </select>)</label>
+                    </div>
+                    <button id="calculateBtn" type="button">Convert</button>
+                </form>
+                <div id="result"></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

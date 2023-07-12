@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8f01d71009.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Length</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="selection-container">
+            <div class="selection-header">
+                <div class="selection-back-wrap">
+                    <div id="goback">
+                        <div class="back-link">
+                            <p><i class="fa-solid fa-arrow-left"></i> Back</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="gohistory" class="history">
+                    <p><i class="fa fa-history" aria-hidden="true"></i> History</p>
+                </div>
+            </div>
+
+            <div class="selection-main">
+                <div class="maintext">
+                    <h3>Unit Converter</h3>
+
+                </div>
+                <div class="row">
+                    <a href="index.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-scale-unbalanced-flip fa-2xl"></i>
+                                <br><br> BMI
+                            </p>
+                        </div>
+                    </a>
+                    <a href="time.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-clock fa-2xl"></i>
+                                <br><br> Time
+                            </p>
+                        </div>
+                    </a>
+                    <a href="temperature.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-temperature-half fa-2xl"></i>
+                                <br><br> Temperature
+                            </p>
+                        </div>
+                    </a>
+                    <a href="length.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-ruler-vertical fa-2xl"></i>
+                                <br><br> Length
+                            </p>
+                        </div>
+                    </a>
+                    <a href="age.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-calendar-days fa-2xl"></i>
+                                <br><br> Age
+                            </p>
+                        </div>
+                    </a>
+                    <a href="mass.html" class="selection-link">
+                        <div class="col">
+                            <p class="selection-text">
+                                <i class="fa-solid fa-weight-scale fa-2xl"></i>
+                                <br><br> Mass
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-selected-container">
+            <button id="menu">Menu</button>
+            <div class="selection-selected-content">
+                <h3 id="selection-selected-main">Length</h3>
+                <form>
+                    <div class="input-group">
+                        <label for="length">Value to Convert:</label>
+                        <input type="number" id="length" placeholder="Enter length">
+                    </div>
+                    <div class="input-group">
+                        <label for="fromUnit">From
+                            (<select id="fromUnit">
+                                <option value="mm">Millimeter (mm)</option>
+                                <option value="cm">Centimeter (cm)</option>
+                                <option value="m">Meter (m)</option>
+                                <option value="km">Kilometer (km)</option>
+                                <option value="in">Inch (in)</option>
+                                <option value="ft">Foot (ft)</option>
+                                <option value="yd">Yard (yd)</option>
+                                <option value="mi">Mile (mi)</option>
+                            </select>)
+                        </label>
+                        <label for="toUnit">To:
+                            (<select id="toUnit">
+                                <option value="mm">Millimeter (mm)</option>
+                                <option selected value="cm">Centimeter (cm)</option>
+                                <option value="m">Meter (m)</option>
+                                <option value="km">Kilometer (km)</option>
+                                <option value="in">Inch (in)</option>
+                                <option value="ft">Foot (ft)</option>
+                                <option value="yd">Yard (yd)</option>
+                                <option value="mi">Mile (mi)</option>
+                            </select>)
+                        </label>
+                    </div>
+                    <button id="calculateBtn" type="button">Convert</button>
+                </form>
+                <div id="result"></div>
+            </div>
+        </div>
+
+    </div>
+    <script type="module">
+
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getDatabase, ref, get, set, child, update, remove }
+            from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        $(document).ready(function () {
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyDlfXppZAlKPhka8PshFutePTELu7CW0mQ",
+                authDomain: "innate-infusion-341416.firebaseapp.com",
+                databaseURL: "https://innate-infusion-341416-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "innate-infusion-341416",
+                storageBucket: "innate-infusion-341416.appspot.com",
+                messagingSenderId: "697421901220",
+                appId: "1:697421901220:web:633080c806f82db722a531"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+
+
+
+
+
+            const db = getDatabase();
+
+            // var count = 0;
+            // const query = db.ref('Universal/').orderByChild('timestamp').limitToLast(1);
+            // console.log('this is the last index'+ query)
+
+            function InsertData(value, from, to, result) {
+                set(ref(db, "Universal/Length/" + new Date().getTime() + "/"), {
+                    Value: value,
+                    From: from,
+                    To: to,
+                    Result: result
+                })
+                    .then(() => {
+                        console.log("Data added successfully");
+                    })
+                    .catch((error) => {
+                        alert(error);
+                    });
+            }
+
+            $('#calculateBtn').on('click', function () {
+                var value = parseFloat($('#length').val());
+                var fromUnit = $('#fromUnit').val();
+                var toUnit = $('#toUnit').val();
+                var result;
+
+                switch (fromUnit) {
+                    case 'mm':
+                        switch (toUnit) {
+                            case 'cm':
+                                result = value / 10;
+                                break;
+                            case 'm':
+                                result = value / 1000;
+                                break;
+                            case 'km':
+                                result = value / 1000000;
+                                break;
+                            case 'in':
+                                result = value * 0.0393701;
+                                break;
+                            case 'ft':
+                                result = value * 0.00328084;
+                                break;
+                            case 'yd':
+                                result = value * 0.00109361;
+                                break;
+                            case 'mi':
+                                result = value * 6.2137e-7;
+                                break;
+                            default:
+                                result = 'Invalid conversion';
+                        }
+                        break;
+                    case 'cm':
+                        switch (toUnit) {
+                            case 'mm':
+                                result = value * 10;
+                                break;
+                            case 'm':
+                                result = value / 100;
+                                break;
+                            case 'km':
+                                result = value / 100000;
+                                break;
+                            case 'in':
+                                result = value * 0.393701;
+                                break;
+                            case 'ft':
+                                result = value * 0.0328084;
+                                break;
+                            case 'yd':
+                                result = value * 0.0109361;
+                                break;
+                            case 'mi':
+                                result = value * 6.2137e-6;
+                                break;
+                            default:
+                                result = 'Invalid conversion';
+                        }
+                        break;
+                    case 'm':
+                        switch (toUnit) {
+                            case 'mm':
+                                result = value * 1000;
+                                break;
+                            case 'cm':
+                                result = value * 100;
+                                break;
+                            case 'km':
+                                result = value / 1000;
+                                break;
+                            case 'in':
+                                result = value * 39.3701;
+                                break;
+                            case 'ft':
+                                result = value * 3.28084;
+                                break;
+                            case 'yd':
+                                result = value * 1.09361;
+                                break;
+                            case 'mi':
+                                result = value * 0.000621371;
+                                break;
+                            default:
+                                result = 'Invalid conversion';
+                        }
+                        break;
+                    case 'km':
+                        switch (toUnit) {
+                            case 'mm':
+                                result = value * 1000000;
+                                break;
+                            case 'cm':
+                                result = value * 100000;
+                                break;
+                            case 'm':
+                                result = value * 1000;
+                                break;
+                            case 'in':
+                                result = value * 39370.1;
+                                break;
+                            case 'ft':
+                                result = value * 3280.84;
+                                break;
+                            case 'yd':
+                                result = value * 1093.61;
+                                break;
+                            case 'mi':
+                                result = value * 0.621371;
+                                break;
+                            default:
+                                result = 'Invalid conversion';
+                        }
+                        break;
+                    case 'in':
+                        switch (toUnit) {
+                            case 'mm':
+                                result = value * 25.4;
+                                break;
+                            case 'cm':
+                                result = value * 2.54;
+                                break;
+                            case 'm':
+                                result = value * 0.0254;
+                                break;
+                            case 'km':
+                                result = value * 2.54e-5;
+                                break;
+                            case 'ft':
+                                result = value * 0.0833333;
+                                break;
+                            case 'yd':
+                                result = value * 0.0277778;
+                                break;
+                            case 'mi':
+                                result = value * 1.5783e-5;
+                                break;
+                            default:
+                                result = 'Invalid conversion';
+                        }
+                        break;
+                    case 'ft':
+                        switch (toUnit) {
+                            case 'mm':
+                                result = value * 304.8;
+                                break;
+                            case 'cm':
+                                result = value * 30.48;
+                                break;
+                            case 'm':
+                                result = value * 0.3048;
+                                break;
+                            case 'km':
+                                result = value * 0.0003048;
+                                break;
+                            case 'in':
+                                result = value * 12;
+                                break;
+                            case 'yd':
+                                result = value * 0.333333;
+                                break;
+                            case 'mi':
+                                result = value * 0.000189394;
+                                break;
+                            default:
+                                result = 'Invalid conversion';
+                        }
+                        break;
+                    case 'yd':
+                        switch (toUnit) {
+                            case 'mm':
+                                result = value * 914.4;
+                                break;
+                            case 'cm':
+                                result = value * 91.44;
+                                break;
+                            case 'm':
+                                result = value * 0.9144;
+                                break;
+                            case 'km':
+                                result = value * 0.0009144;
+                                break;
+                            case 'in':
+                                result = value * 36;
+                                break;
+                            case 'ft':
+                                result = value * 3;
+                                break;
+                            case 'mi':
+                                result = value * 0.000568182;
+                                break;
+                            default:
+                                result = 'Invalid conversion';
+                        }
+                        break;
+                    case 'mi':
+                        switch (toUnit) {
+                            case 'mm':
+                                result = value * 1609344;
+                                break;
+                            case 'cm':
+                                result = value * 160934.4;
+                                break;
+                            case 'm':
+                                result = value * 1609.34;
+                                break;
+                            case 'km':
+                                result = value * 1.60934;
+                                break;
+                            case 'in':
+                                result = value * 63360;
+                                break;
+                            case 'ft':
+                                result = value * 5280;
+                                break;
+                            case 'yd':
+                                result = value * 1760;
+                                break;
+                            default:
+                                result = 'Invalid conversion';
+                        }
+                        break;
+                    default:
+                        result = 'Invalid conversion';
+                }
+                if (isNaN(value) ||  value === 0) {
+                    $('#result').text("Please enter valid value.");
+                    return;
+                }else{
+                $('#result').text(result+toUnit);
+                let tempresult  = $('#result').text();
+                InsertData(value, fromUnit, toUnit, tempresult);
+                }
+            });
+            // Change the selected option to the next index
+            $('#fromUnit').change(function () {
+                var selectedValue = $(this).val();
+                var selectedIndex = $(this).prop('selectedIndex');
+                var optionsLength = $(this).find('option').length;
+
+                console.log('Selected value: ' + selectedValue);//debug
+                console.log('Selected index: ' + selectedIndex);//debug
+
+                    var selectedValueto = $('#toUnit').val();
+                    var selectedIndexto = $('#toUnit').prop('selectedIndex');
+                    var optionsLengthto = $('#toUnit').find('option').length;
+                    console.log("selected item ="+selectedIndex+" selected item to = "+selectedIndexto)
+                    if (selectedIndex == selectedIndexto) {
+                        // Change the selected option to the next index
+                        var nextIndex = (selectedIndexto + 1) % optionsLengthto;
+                        $('#toUnit').prop('selectedIndex', nextIndex);
+                    }
+            });
+            $('#toUnit').change(function () {
+                var selectedValue = $(this).val();
+                var selectedIndex = $(this).prop('selectedIndex');
+                var optionsLength = $(this).find('option').length;
+
+                console.log('Selected value: ' + selectedValue);//debug
+                console.log('Selected index: ' + selectedIndex);//debug
+
+                var selectedValueto = $('#fromUnit').val();
+                var selectedIndexto = $('#fromUnit').prop('selectedIndex');
+                var optionsLengthto = $('#fromUnit').find('option').length;
+                console.log("selected item =" + selectedIndex + " selected item to = " + selectedIndexto)
+                if (selectedValue == selectedValueto) {
+                    // Change the selected option to the next index
+                    var nextIndex = (selectedIndexto + 1) % optionsLengthto;
+                    $('#fromUnit').prop('selectedIndex', nextIndex);
+                }
+            });
+            $('#menu').on('click', function () {
+                console.log("we entered the test function boundary"); // Debug
+                $('.selection-container').css('left', "0px");
+            });
+
+            $('#goback').on('click', function () {
+                console.log("we entered the button function boundary"); // Debug
+                $('.selection-container').css('left', "-1000px");
+            });
+            // adding history functionality
+            $('#gohistory').on('click', function () {
+                window.location.href = 'history.html';
+            });
+            const url = window.location.href;
+
+            // Extract the query string from the URL
+            const queryString = url.split('?')[1];
+
+            if (queryString == undefined) {
+                console.log('you didnt come from history page');//debug
+            } else {
+                console.log(queryString);//debug
+
+                const dbref = ref(db);
+
+                get(child(dbref, "Universal/Length/" + queryString))
+                    .then((snapshot) => {
+                        if (snapshot.exists()) {
+                            $('#length').val(snapshot.val().Value);
+                            $('#fromUnit').val(snapshot.val().From) ;
+                            $('#toUnit').val(snapshot.val().To) ;
+                            $('#result').text(snapshot.val().Result);
+                        } else {
+                            alert("No data found");
+                        }
+                    })
+                    .catch((error) => {
+                        alert(error)
+                    })
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
