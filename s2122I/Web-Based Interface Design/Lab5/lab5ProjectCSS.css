@@ -1,0 +1,132 @@
+body {
+  background-color: #f3dec9;
+}
+hr.lineAtThetop {
+  border-width: 10px;
+  border-style: solid;
+  border-color: #ffca13;
+  border-radius: 20px;
+}
+#UMT-s-logo {
+  width: 64px;
+  height: 50px;
+}
+#main-heading {
+  margin: 10px 10px;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+}
+.mainHeading {
+  float: left;
+  margin-bottom: 20px;
+}
+.mainHeading a {
+  text-decoration: none;
+}
+#smallLogo {
+  float: right;
+}
+#contentCatagory {
+  width: 100%;
+  min-height: 800px;
+  background-color: #fac900;
+  overflow: hidden;
+  /* i could not apply these attribu */
+  /* border-style: solid;
+    border-width: 12px; */
+}
+h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  border-width: 10px;
+  margin-top: 20px;
+  padding: 10px;
+}
+#menu {
+  width: 20%;
+  float: left;
+}
+#menuItem {
+  list-style-type: none;
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border-width: 2px;
+  margin-bottom: 10px;
+  background-color: #472c7d;
+  color: white;
+  border-style: solid;
+  height: 400px;
+}
+#menuItem li {
+  margin-bottom: 10px;
+}
+#menuItem li a {
+  display: -webkit-box;
+  border-radius: 10px;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+#menuItem li a:hover {
+  background-color: lightgray;
+  color: black;
+}
+#content {
+  width: 50%;
+  float: left;
+}
+
+#UMT-b-logo {
+  width: 400px;
+  height: 500px;
+
+  height: auto;
+  margin-top: 150px;
+}
+#bigLogo {
+  width: 30%;
+  float: right;
+}
+.paragraph {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: lightgray;
+  padding: 15px;
+  border-radius: 10px;
+  height: 400px;
+}
+/* width */
+.paragraph::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.paragraph::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.paragraph::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.paragraph::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.paragraph ul {
+  margin-bottom: 10px;
+}
+.paragraph ul li {
+  margin-top: 10px;
+}
+#intro {
+  margin-bottom: 10px;
+}
+#footer {
+  background-color: #cc99ff;
+  clear: both;
+  text-align: center;
+}

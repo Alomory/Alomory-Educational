@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>test</title>
+        <style>
+            .wrapper{
+                width: 40%;
+                margin: auto;
+            }
+            form{
+                border-style: groove;
+                border-width: 2px;
+                border-color: black;
+                padding: 10px 30px 30px 10px;
+                overflow: hidden;
+            }
+            #name, #email,.final{
+                border-top-style: none;
+                border-left-style: none;
+                border-right-style: none;
+                border-bottom-style: groove;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="wrapper">
+            <form action="post">
+                <h1>My Music Survey</h1>
+                <label for="name">
+                    Name:
+                </label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">
+                    E-mail:
+                </label><br>
+                <input type="email" name="email" id="email" required><br><br>
+
+                <fieldset>
+                    <legend style="max-width: 100%; ">
+                        Select your favorite Type of music:
+                    </legend>
+                    <input type="checkbox" name="pop" value="Pop">
+                    <label for="pop">Pop</label><br>
+                    <input type="checkbox" name="classical" value="Classical">
+                    <label for="classical">Classical</label><br>
+                    <input type="checkbox" name="rock" value="Rock">
+                    <label for="rock">Rock</label><br>
+                    <input type="checkbox" name="folk" value="Folk">
+                    <label for="folk">Folk</label><br>
+                    <input type="checkbox" name="rap" value="Rap">
+                    <label for="rap">Rap</label><br>
+                    <input type="checkbox" name="other" id="other" onchange="checkOthers()">
+                    <label for="other">Other</label>
+                    <textarea name="forOthers" id="othersDetails" cols="50" rows="3"
+                    style="display: none; max-width: 80%;"></textarea>
+                </fieldset>
+                <br><br>
+                <fieldset>
+                    <legend>
+                        Select How often you purchase Music CDs:
+                    </legend>
+                    <input type="radio" name="musicPurchase" value="Weekly">Weekly <br>
+                    <input type="radio" name="musicPurchase" value="A few CDs each year">A few CDs each year <br>
+                    <input type="radio" name="musicPurchase" value="Monthly">Monthly <br>
+                    <input type="radio" name="musicPurchase" value="Never purchase">Never purchase <br>
+                                       
+                </fieldset>
+                <br>
+                <div>
+                    <label for="locationOfMusic">Select the locations you listen to Music:</label><br>
+                    <select name="locationOfMusic" id="locationOfMusic">
+                        <option value="none" selected disabled hidden>Select one location</option>
+                        <option value="home">At home</option>
+                        <option value="car">In my car</option>
+                        <option value="anywhere">Anywhere (MP3 Player)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="role">
+                        What role does music play in your life?
+                    </label> <br>
+                    <textarea name="role" id="role" cols="50" rows="3"
+                    placeholder="it make me feel relax..." style="max-width: 100%;"></textarea>
+                </div>
+                <br>
+                <input type="submit" class="final">
+                <input type="reset" class="final">
+            </form>
+        </div>
+    </body>
+    <script>
+        function checkOthers(){
+            var text = document.getElementById("othersDetails");
+            var otherCheckbox = document.getElementById("other");
+            if(otherCheckbox.checked == true){
+                text.style.display = "block";
+            }else{
+                text.style.display = "none";
+            }
+        }
+    </script>
+</html>

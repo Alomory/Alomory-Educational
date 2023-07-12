@@ -1,0 +1,54 @@
+*{
+    box-sizing: border-box;
+    font-family: arial;
+    padding: 0;
+    margin: 0;
+}
+
+.bg{
+    /* the imgae used */
+    background-image: url("https://img.freepik.com/free-photo/cover-foliage-space-green-nature_1253-783.jpg?w=1060&t=st=1671612421~exp=1671613021~hmac=ebe29c2ae51519f752a620ecfefda0c1ea2c49a90d3e49bfb97cf014aa353563");
+    min-height: 380px;
+    min-height: 500px;
+
+    /* Create and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.container{
+    position: absolute;
+    right: 0;
+
+    margin: 20px;
+    width: 300px;
+    max-width: 300px;
+ 
+    padding: 16px  20px;
+    background-color: #683902;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+}
+h2{
+    padding: 10px 0 20px 0;
+    font-size: 25px;
+}
+input , textarea{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    resize: none;
+    border-radius: 3px;
+    background-color:lightgray ;
+    background-color: #ddd;
+    outline: none;
+    
+}
+input[type="submit"]:hover{
+    cursor: pointer;
+}

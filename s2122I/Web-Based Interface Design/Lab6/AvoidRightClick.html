@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Javascript, Disable context menu on right click
+    </title>
+    <script type="text/javascript">
+        if(document.addEventListener){
+            document.addEventListener('contextmenu', function(e){
+                e.preventDefault();
+            }, false);  
+        }else{
+            document.attachEvent('oncontextmenu', function(){
+                window.event.returnValue = false;
+            })
+        }
+    </script>
+</head>
+<html>
+    nothing is here
+</html>

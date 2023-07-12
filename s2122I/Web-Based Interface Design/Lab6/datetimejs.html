@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>My First JavaScript</h2>
+
+        <button type="button" onclick="changeDateAndBackground()"> Click me to display Date and time</button>
+
+        <p id="demo"></p>
+        <script>
+            function changeDateAndBackground(){
+
+            document.getElementById("demo").innerHTML = Date();
+            document.getElementById("demo").style.fontSize = "25px";
+            document.getElementById("demo").style.color = "red";
+            document.getElementById("demo").style.backgroundColor = "yellow";
+        }
+        </script>
+    </body>
+</html>

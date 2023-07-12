@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Theme Simple Me</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      body {
+        font: 20px "Montserrat", sans-serif;
+        line-height: 1.8;
+        color: #f5f6f7;
+      }
+      p {
+        font-size: 16px;
+      }
+
+      .container-fluid {
+        padding-top: 70px;
+        padding-bottom: 70px;
+      }
+
+      .bg-1 {
+        background-color: #1abc9c;
+        color: #ffffff;
+      }
+
+      .bg-2 {
+        background-color: #474e5d;
+        color: #ffffff;
+      }
+
+      .bg-3 {
+        background-color: #ffffff;
+        color: #555555;
+      }
+      .navbar {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border: 0;
+        border-radius: 0;
+        margin-bottom: 0;
+        font-size: 12px;
+        letter-spacing: 5px;
+      }
+      .navbar-nav li a:hover {
+        color: #1abc9c !important;
+      }
+      .bg-4 {
+        background-color: #2f2f2f;
+        color: #ffffff;
+      }
+      .aboutMe-links {
+        color: yellowgreen;
+        text-decoration: none;
+        position: relative;
+        padding: 2px;
+      }
+      .aboutMe-links :before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-bottom: 1px solid #1abc9c;
+        transform: scaleX(0);
+        transition: transform 0.5s ease;
+      }
+      .aboutMe-links :hover:before {
+        transform: scaleX(1);
+      }
+      .aboutMe-links :hover {
+        color: #1abc9c;
+      }
+      .aboutMe-links :visited {
+        color: #1abc9c;
+      }
+
+      /* 
+        .col-sm-4 p{
+            padding: 1rem 0 1rem 0;
+        } */
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="mailto:Komar112011@gmail.com">Me</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">WHO</a></li>
+            <li><a href="#">WHAT</a></li>
+            <li><a href="#">MORE</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid bg-1 text-center">
+      <h3>Who Am I?</h3>
+      <img
+        src="./img/Omar.jpg"
+        alt="pretty bird"
+        class="img-circle"
+        style="width: 25rem"
+      />
+      <h3>I'm Omar Alomory</h3>
+    </div>
+    <div class="container-fluid bg-2 text-center">
+      <h3>What Am I?</h3>
+      <p>
+        A Student who came to Malaysia as student to complete his bechelor
+        degree in computer science (Mobile computing) at
+        <a href="https://www.umt.edu.my/" class="aboutMe-links" target="_blank"
+          ><b>UMT</b></a
+        >, Malaysia, i used to live in a small town called
+        <a
+          href="https://en.wikipedia.org/wiki/Ibb"
+          class="aboutMe-links"
+          target="_blank"
+          ><b>Ibb&nbsp;city,&nbsp; Yemen</b></a
+        >
+        . Getting all my patent and support from our creator
+        <i>Allah</i> and my family to accomplish my tasks and graduate from UMT.
+      </p>
+      <a href="#" class="btn btn-default btn-lg"
+        ><span class="glyphicon glyphicon-search"></span> Search</a
+      >
+    </div>
+    <div class="container-fluid bg-3 text-center">
+      <h3>More about me?</h3>
+      <hr>
+      <div class="row">
+        <div class="col-sm-4">
+          <p>
+            After coming here to Malaysia, i had many friends from my department
+             and different departments, the people here are really friendy and kind
+             . 
+          </p>
+          <img
+            src="./img/sem one group pic.jpg"
+            alt="First semester group picture"
+            class="img-responsive" download
+          />
+        </div>
+        <div class="col-sm-4">
+          <p>
+            First semester was a little bit tough for me at the first moment but 
+             they helped me along the semester, and I finished it successfully 
+             with memorable moments.
+          </p>
+          <img
+            src="./img/during class.jpg"
+            alt="bird1"
+            class="img-responsive"
+            height="100000px"
+          />
+        </div>
+        <div class="col-sm-4">
+          <p>
+            Sometimes when we are free, we do like to play badminton.
+             I used to play football mostly and some other games in my 
+             country, but trying badminton was special.
+          </p>
+          <img
+            src="./img/VideoCapture_20221231-001417.jpg"
+            alt="bird1"
+            class="img-responsive"
+          />
+        </div>
+      </div>
+    </div>
+    <footer class="container-fluid bg-4 text-center">
+      <p>Bootstrap Theme "Simply Me"</p>
+      <p>
+        This work is for UMT, Malaysia. for subject <b>CSF3133
+             Web-Based Interface Design
+        </b>
+      </p>
+      <p><b>LECTURER: </b>ILY AMALINA BINTI AHMAD SABRI AHMAD SABRI</p>
+      <p><b>DEMONSTRATOR: </b>SIR MOHD ARIZAL SHAMSIL MAT RIFIN</p>
+      <p>All copyright reserved to &copy; UMT & OMAR ALOMORY</p>
+    </footer>
+  </body>
+</html>
