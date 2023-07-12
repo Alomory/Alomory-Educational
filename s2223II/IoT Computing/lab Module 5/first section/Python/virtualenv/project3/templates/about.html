@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>this is testing page</title>
+</head>
+<body>
+	<h1>About Page</h1>
+	<h2>{{my_string}}</h2>
+	<h2>{{my_list[1]}}</h2>
+	{% for n in my_dict %}
+
+	<h1>{{n.name}}</h1>
+	<p>{{n.age}}</p>
+	<p>{{n.dateofbirth}}</p>
+	{% endfor %}
+</body>
+</html>
