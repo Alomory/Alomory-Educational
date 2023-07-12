@@ -1,0 +1,98 @@
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:#6abadeba;  
+    font-family: 'Arial';
+	background-image: linear-gradient(to right, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}  
+.Signup{  
+        width: 500px;
+		height: 420px;
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 450px;  
+        padding: 80px;  
+		color: whitesmoke;
+		backdrop-filter: blur(16px) saturate(180%);
+		-webkit-backdrop-filter: blur(16px) saturate(180%);
+        background:rgba(11, 15, 13, 0.582);  
+        border-radius: 15px; 
+		border: 1px solid rgba(255, 255, 255, 0.125);
+		
+          
+}  
+h2{  
+    text-align: center;  
+    color: white;  
+    padding: 20px;  
+}  
+label{  
+    color: white;  
+    font-size: 17px;  
+}  
+#urname{  
+    width: 450px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+} 
+ 
+#Pass{  
+    width: 450px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}
+
+#reenterpass{  
+    width: 450px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+} 
+
+#theemail{  
+    width: 450px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}  
+
+#mobileno{  
+    width: 450px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}  
+     
+#thesubmit{  
+    width: 100px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 30px;  
+    padding-left: 7px;  
+    color: blue;
+	margin: 12px 0 0 170px;
+	padding:10px
+	
+}  
+
+
+span{  
+    color: white;  
+    font-size: 17px;  
+}  
+a{  
+    float: right;  
+      
+} 

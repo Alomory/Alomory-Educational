@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEEDBACK FORM</title>
+    <link rel="stylesheet" href="../css/feedback.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+        <h1 id="title">'OHAF' Travel Feedback Form</h1>
+        <p id="description" class="description">Thank you for telling us about your experience and help us improve</p>
+        <form id="survey-form">
+          <section class="form-block">
+            <label id="name-label">Name</label>
+              <input type="text" 
+                  name="name"
+                  id="name" 
+                  class="form-control"
+                  placeholder="Enter your name" 
+                  required/>
+          </section>
+          <section class="form-block">
+             <label id="email-label">Email</label>
+                <input type="email" 
+                  name="email"
+                  id="email" 
+                  class="form-control"
+                  placeholder="Enter your Email" 
+                  required/>
+          </section>
+             <section class="form-block">
+             <label id="number-label">Traveling days</label>
+                <input type="number" 
+                  name="days"
+                  id="number" 
+                  min="1"
+                  max="999"
+                  class="form-control"
+                  placeholder="Enter your total number of days you spend" 
+                  required/>
+          </section>
+           <section class="form-block">
+             <p>Purpose of Travel</p>
+             <select id="dropdown" name="purpose" class=form-control required>
+               <option disabled selected value>You are a ...</option>
+               <option value="Student">Student</option>
+               <option value="Teacher">Teacher</option>
+               <option value="Teacher">Research</option>
+               <option value="Teacher">Tourist</option>
+                
+               <option value="Teacher">Photography</option>
+               <option value="Teacher">Investor</option>
+             </select>
+          </section>
+           <section class="form-block">
+            <p>Would you recommend 'OHAF' to a friend?</p>
+            <label>
+              <input
+                name="user-recommend"
+                value="definitely"
+                type="radio"
+                class="input-radio"
+                checked
+              />Definitely
+             </label>
+            <label>
+              <input
+                name="user-recommend"
+                value="maybe"
+                type="radio"
+                class="input-radio"
+              />Maybe
+             </label>
+            <label>
+              <input
+                name="user-recommend"
+                value="not-sure"
+                type="radio"
+                class="input-radio"
+              />Not sure
+             </label>
+          </section>
+          <section class="form-block">
+            <p>How can we improve traveling services? (Check all that apply)
+            </p>
+            <label>
+              <input
+                     name="improve"
+                     value="climate control"
+                     type="checkbox"
+                     />Enhanced travel apps and online tools</label>
+            <label>
+              <input
+                     name="improve"
+                     value="Oxygen flavour"
+                     type="checkbox"
+                     />More convenient and flexible booking options </label>
+            <label>
+              <input
+                     name="improve"
+                     value="Oxygen quantity"
+                     type="checkbox"
+                     />Bus time</label>
+            <label>
+              <input
+                     name="improve"
+                     value="Oxygen pricing options"
+                     type="checkbox"
+                     />Traveling pricing options</label>
+            <label>
+              <input
+                     name="improve"
+                     value="Speed of re-entry"
+                     type="checkbox"
+                     />Improved customer service</label>
+        <section class="form-block">
+            <p>Any advice for future adventurers?</p>
+            <textarea
+              id="comments"
+              class="input-textarea"
+              name="comment"
+              placeholder="Enter your comment here..."
+            ></textarea>
+          </d>
+      
+          <section class="form-block">
+            <button type="submit" id="submit" class="submit-button">
+              Submit
+            </button>
+          </section>
+        </form>
+      </main>
+</body>
+</html>

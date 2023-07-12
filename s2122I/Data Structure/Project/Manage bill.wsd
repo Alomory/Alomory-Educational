@@ -1,0 +1,40 @@
+@startuml Manage Bill
+
+title Manage Bill 
+
+actor Customer
+actor Cashier
+box System
+    participant Interface
+    participant "Order List" as Orders
+end box
+
+activate Customer
+
+Customer -> Interface ++ : Pay bill
+alt Cash
+    Interface -> Cashier ++ : Notify
+    Cashier -> Interface: Update received cash
+    Interface -> Interface: Calculate 
+    Interface -> Interface: Update status
+    Interface --> Cashier : Response
+    Cashier --> Customer -- : Response
+else E-Wallet / online banking
+    Customer -> Interface: Make payment
+    Interface -> Interface: Check payment
+    Interface -> Interface: Update status
+    Interface --> Customer: Response
+end
+
+Interface -> Orders ++ : Update order
+return Response
+
+alt Request receipt
+    Cashier -> Interface: Request receipt
+    Interface -> Interface: Generate receipt
+    return Receipt
+end
+
+deactivate Customer
+
+@enduml

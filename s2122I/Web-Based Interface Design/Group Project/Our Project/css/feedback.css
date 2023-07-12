@@ -1,0 +1,101 @@
+html {
+    font-size: 20px;
+    font-family: calibri, sans-serif;
+    text-align: center;
+  }
+  
+  :root {
+    --color-orange: #FCDAAA;
+    --color-darkblue: #5A7191;
+    --color-green: rgba(96,194,153, 0.7);
+  }
+  .container {
+    width: 100%;
+    margin: 2.5rem auto 0 auto;
+    max-width: 720px;
+  }
+  
+  body {
+    font-family: 'Calibri', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    color: var(--color-orange);
+    margin: 0;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-image: linear-gradient(
+        15deg,
+        rgba(96,137,194,0.8),
+        rgba(153,96,194,0.9)
+      ),    url(https://img.freepik.com/free-vector/realistic-travel-background-with-elements_52683-77784.jpg?w=1380&t=st=1673202481~exp=1673203081~hmac=867d79e241383a60763f7161e15700d7ee9d8bf1dac54994b0f4c5e376a85e96);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .description {
+    font-style: italic;
+    text-shadow: 3px 3px 2px var(--color-darkblue);
+    
+  }
+  label {
+    display: flex;
+    align-items: center;
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+  form {
+    background: var(--color-green);
+    padding: 3rem 2.9rem;
+    border-radius: 0.6rem;
+  }
+  
+  .form-block {
+     margin: auto auto 15px auto;
+     text-align: left;
+     text-shadow: 3px 3px 2px var(--color-darkblue);
+  }
+  
+  .form-control {
+    line-height: 3;
+    display: block;
+    width: 100%;
+    height: 2em;
+    padding: 0.175rem 0.75rem;
+    color: var(--color-darkblue);
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.4rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .form-control:focus {
+    border-color: #7F68A8;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem rgb(127,104,168, 0.58);
+  }
+  
+  .input-textarea {
+    width: 100%;
+    height: 200px;
+    resize: vertical;
+  }
+  
+  .submit-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--color-darkblue);
+    color: inherit;
+    border-radius: 12px;
+    cursor: pointer;
+  }

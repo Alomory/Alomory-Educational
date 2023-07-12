@@ -1,0 +1,67 @@
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:#6abadeba;  
+    font-family: 'Arial';
+	background-image: linear-gradient(to right, #051937, #004d7a, #008793, #00bf72, #a8eb12)
+}  
+.login{  
+        width: 382px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 450px;  
+        padding: 80px; 
+		color: whitesmoke;
+		backdrop-filter: blur(16px) saturate(180%);
+		-webkit-backdrop-filter: blur(16px) saturate(180%);
+        background: rgba(11, 15, 13, 0.582);  
+        border-radius: 15px ;  
+		border: 1px solid rgba(255, 255, 255, 0.125);
+          
+}  
+h2{  
+    text-align: center;  
+    color: white;  
+    padding: 20px;  
+}  
+label{  
+    color: white;  
+    font-size: 17px;  
+}  
+#Username{  
+    width: 350px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}  
+#Pass{  
+    width: 350px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}  
+#LogInHere{  
+    width: 100px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 30px;  
+    padding-left: 7px;  
+    color: #00008b;
+	margin: 12px 0 0 120px;
+  
+  
+}  
+
+
+span{  
+    color: white;  
+    font-size: 17px;  
+}  
+a{  
+    float: right;  
+      
+} 
