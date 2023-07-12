@@ -1,0 +1,1 @@
+task 1 is basiclly take the out put from tempereture sensor then convert the output to json file and python text
