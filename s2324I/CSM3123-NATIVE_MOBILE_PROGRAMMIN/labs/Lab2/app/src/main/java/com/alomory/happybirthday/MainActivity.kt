@@ -37,15 +37,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-    name = "My Preview"
-)
-
+@Preview(showBackground = true)
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        Greeting("Android")
+        Greeting("Omar Alomory")
     }
 }
