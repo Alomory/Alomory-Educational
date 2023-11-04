@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.alomory.happybirthday"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.alomory.happybirthday"
