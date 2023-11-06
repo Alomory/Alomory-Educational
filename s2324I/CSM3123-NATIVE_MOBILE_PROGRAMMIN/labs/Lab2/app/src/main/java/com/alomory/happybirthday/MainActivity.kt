@@ -92,14 +92,14 @@ fun ProfileBuilderApp() {
                     )
                 }
                 Text(
-                    text = "Jennifer Doe",
+                    text = stringResource(R.string.developer_name_text),
                     Modifier.fillMaxWidth(),
                     fontSize = 40.sp,
                     textAlign = TextAlign.Center,
 
                 )
                 Text(
-                    text = "Android Developer Extraordinaire",
+                    text = stringResource(R.string.developer_desc_text),
                     Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
                     fontSize = 12.sp,
@@ -133,7 +133,7 @@ fun ProfileBuilderApp() {
                            tint = Color(0xff006d3a)
                     )
 
-                    Text(text = "+11 (123) 444 555 666")
+                    Text(text = stringResource(R.string.phone_no_text))
                 }
                 Row (
                     horizontalArrangement = Arrangement.Start,
@@ -144,7 +144,7 @@ fun ProfileBuilderApp() {
                         Modifier.padding(start = 80.dp, end = 25.dp, bottom = 20.dp),
                         tint = Color(0xff006d3a)
                     )
-                    Text(text = "@AndroidDev")
+                    Text(text = stringResource(R.string.domain_text))
                 }
                 Row (
                     horizontalArrangement = Arrangement.Start,
@@ -155,7 +155,7 @@ fun ProfileBuilderApp() {
                         Modifier.padding(start = 80.dp, end = 25.dp, bottom = 25.dp),
                         tint = Color(0xff006d3a)
                     )
-                    Text(text = "jen.doe@android.com")
+                    Text(text = stringResource(R.string.email_text))
                 }
             }
         }

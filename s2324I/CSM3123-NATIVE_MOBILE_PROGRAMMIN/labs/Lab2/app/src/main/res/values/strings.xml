@@ -13,4 +13,9 @@
     <string name="third_description">A layout composable that places its children in a horizontal sequence.</string>
     <string name="fourth_title">Column composable</string>
     <string name="fourth_description">A layout composable that places its children in a vertical sequence.</string>
+    <string name="email_text">jen.doe@android.com</string>
+    <string name="domain_text">\@AndroidDev</string>
+    <string name="phone_no_text">+11 (123) 444 555 666</string>
+    <string name="developer_desc_text">Android Developer Extraordinaire</string>
+    <string name="developer_name_text">Jennifer Doe</string>
 </resources>
