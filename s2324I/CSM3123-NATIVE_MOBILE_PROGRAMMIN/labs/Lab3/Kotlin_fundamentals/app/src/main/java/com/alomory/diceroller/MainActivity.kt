@@ -16,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.alomory.diceroller.R
 import com.alomory.diceroller.ui.theme.DiceRollerTheme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Spacer
