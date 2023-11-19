@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './widget/new_transaction.dart';
 import './widget/transaction_list.dart';
+import './widget/Chart.dart';
 import './models/transaction.dart';
 
 void main() => runApp(MyApp());
@@ -58,19 +59,29 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   //Move existing records in Transaction in here...
+  // final List<Transaction> _userTransactions = [
+  //   Transaction(
+  //     id: 't1',
+  //     title: 'New Shoes',
+  //     amount: 69.99,
+  //     date: DateTime.now(),
+  //   ),
+  //   Transaction(
+  //     id: 't2',
+  //     title: 'Weekly Groceries',
+  //     amount: 16.53,
+  //     date: DateTime.now(),
+  //   ),
+  // ];
+  // Step 2) Method use to Create a List to get recent 7 days of transaction
+  List<Transaction> get _recentTransactions {
+    return _userTransactions.where((trx){
+      return trx.date.isAfter(
+        DateTime.now().subtract(Duration(days: 7)),
+      );
+    }).toList();
+  }
   final List<Transaction> _userTransactions = [
-    Transaction(
-      id: 't1',
-      title: 'New Shoes',
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Weekly Groceries',
-      amount: 16.53,
-      date: DateTime.now(),
-    ),
   ];
 
   //add _addNewTransaction to cater for new record when user click
@@ -131,6 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             //UserTransactions(), // Remove since this widget no longer used..
+            Chart(_recentTransactions),
             TransactionList(_userTransactions), // To dislay the records..
           ],
         ),
