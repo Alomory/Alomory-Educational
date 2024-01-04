@@ -22,8 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // the Bonus mark display appbar 
+        // The bonus marks here i guess 
         setSupportActionBar(findViewById(R.id.my_toolbar));
         // Initialize views
         textView4 = findViewById(R.id.textView4);
