@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // the Bonus mark display appbar 
         setSupportActionBar(findViewById(R.id.my_toolbar));
         // Initialize views
         textView4 = findViewById(R.id.textView4);
